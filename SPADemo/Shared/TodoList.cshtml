@@ -21,7 +21,10 @@
 
     void OnNewItem(string newItemText)
     {
-        Todos?.Add(new Todo { Text = newItemText });
-        StateHasChanged();
+        if (Todos != null)
+        {
+            Todos.Add(new Todo { Text = newItemText });
+            StateHasChanged();
+        }
     }
 }

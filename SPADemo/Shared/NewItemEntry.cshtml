@@ -4,7 +4,7 @@
     </div>
     <input type="text" class="form-control"
            placeholder="Enter your name here"
-           bind-value-oninput="@Text" onkeypress="@KeyPress"/>
+           bind-value-oninput="@Text" onkeypress="@KeyPress" />
     <div class="input-group-append">
         <button class="btn btn-secondary @buttonDisabled" onclick="@NewItem">Add (Enter)</button>
     </div>
@@ -18,22 +18,18 @@
 
     void NewItem()
     {
-        OnNewItem?.Invoke(Text);
-        /*
-                if (OnNewItem != null)
-                {
-                    OnNewItem(Text);
-                    Text = "";
-
-                }
-            }
-        */
+        if (OnNewItem != null)
+        {
+            OnNewItem(Text);
+            Text = "";
+        }
     }
 
     void KeyPress(UIKeyboardEventArgs e)
     {
-        if (e.Key=="Enter")
+        if (e.Key == "Enter")
         {
             NewItem();
         }
     }
+}
