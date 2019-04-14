@@ -34,5 +34,40 @@ namespace SharedLibrary
             }
             OnModelChanged();
         }
+
+        public void CheckRules(string fieldName)
+        {
+            var propInfo = this.GetType().GetProperty(fieldName);
+            var attrInfos = propInfo.GetCustomAttributes(true);
+            foreach (var attrInfo in attrInfos)
+            {
+                if (attrInfo is IModelRule modelRule)
+                {
+                    var value = propInfo.GetValue(this);
+                    var result = modelRule.Valid(fieldName, value);
+                    if (result.IsValid)
+                    {
+                        RemoveError(fieldName, attrInfo.GetType().Name);
+                    }
+                    else
+                    {
+                        AddError(fieldName, attrInfo.GetType().Name, result.Message);
+                    }
+                }
+            }
+        }
+
+        public void CheckRules()
+        {
+            foreach (var propInfo in this.GetType().GetProperties(
+                System.Reflection.BindingFlags.Public |
+                System.Reflection.BindingFlags.Instance))
+                CheckRules(propInfo.Name);
+
+            return HasErrors();
+
+        }
+
+        
     }
 }
