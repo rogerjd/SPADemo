@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SharedLibrary
+namespace SharedLibrary.Rules
 {
     public interface IModelRule
     {
-        ValidationResult Validate(string fieldName, object fieldValue)
+        ValidationResult Validate(string fieldName, object fieldValue);
     }
 }
