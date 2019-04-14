@@ -38,7 +38,7 @@ namespace SharedLibrary
 
         public void CheckRules(string fieldName)
         {
-            var propInfo = this.GetType().GetProperty(fieldName);
+            var propInfo = this.GetType().GetProperty(fieldName); //todo: how does is see fld in desc?
             var attrInfos = propInfo.GetCustomAttributes(true);
             foreach (var attrInfo in attrInfos)
             {
