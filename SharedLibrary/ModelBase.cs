@@ -58,7 +58,7 @@ namespace SharedLibrary
             }
         }
 
-        public void CheckRules()
+        public bool CheckRules()
         {
             foreach (var propInfo in this.GetType().GetProperties(
                 System.Reflection.BindingFlags.Public |
@@ -93,6 +93,28 @@ namespace SharedLibrary
                 }
             }
             return false;
+        }
+
+        public string GetValue(string fieldName)
+        {
+            var propInfo = this.GetType().GetProperty(fieldName);
+            var value = propInfo.GetValue(this);
+            if (value != null) { return value.ToString(); }
+            return string.Empty;
+        }
+
+        public void SetValue(string fieldName, object value)
+        {
+            var propInfo = this.GetType().GetProperty(fieldName);
+            propInfo.SetValue(this, value);
+            CheckRules();
+        }
+
+        public event EventHandler<EventArgs> ModelChanged;
+
+        protected void OnModelChanged()
+        {
+            ModelChanged?.Invoke(this, new EventArgs());
         }
     }
 }
