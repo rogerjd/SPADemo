@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace SharedLibrary
 {
@@ -24,7 +25,7 @@ namespace SharedLibrary
 
         public void RemoveError(string fieldName, string ruleName)
         {
-            if (!_errors.ContainsKey(fieldName)
+            if (!_errors.ContainsKey(fieldName))
             {
                 _errors.Add(fieldName, new Dictionary<string, string>());
             }
@@ -65,9 +66,33 @@ namespace SharedLibrary
                 CheckRules(propInfo.Name);
 
             return HasErrors();
-
         }
 
-        
+        public string Errors(string fieldName)
+        {
+            if (!_errors.ContainsKey(fieldName))
+            {
+                _errors.Add(fieldName, new Dictionary<string, string>());
+            }
+
+            StringBuilder sb = new StringBuilder();
+            foreach (var err in _errors[fieldName].Values)
+            {
+                sb.AppendLine(err);
+            }
+            return sb.ToString();
+        }
+
+        public bool HasErrors()
+        {
+            foreach (var fn in _errors.Keys)
+            {
+                if (_errors[fn].Keys.Count > 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
