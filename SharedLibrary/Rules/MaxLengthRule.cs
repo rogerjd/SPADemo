@@ -11,7 +11,7 @@ namespace SharedLibrary.Rules
 
         public ValidationResult Validate(string fieldName, object fieldValue)
         {
-            if (fieldValue == null) { return new ValidationResult { IsValid = true }};
+            if (fieldValue == null) { return new ValidationResult { IsValid = true }; };
 
             var stringValue = fieldValue.ToString();
             if (stringValue.Length > _maxLength)
