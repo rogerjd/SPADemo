@@ -1,0 +1,5 @@
+﻿mdsn article
+https://msdn.microsoft.com/en-us/magazine/mt833288.aspx
+
+devex blazor getting started
+https://www.youtube.com/watch?v=bbHzyIsqGuU&t=57s
