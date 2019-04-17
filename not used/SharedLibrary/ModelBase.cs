@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharedLibrary.Rules;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -45,7 +46,7 @@ namespace SharedLibrary
                 if (attrInfo is IModelRule modelRule)
                 {
                     var value = propInfo.GetValue(this);
-                    var result = modelRule.Valid(fieldName, value);
+                    var result = modelRule.Validate(fieldName, value);
                     if (result.IsValid)
                     {
                         RemoveError(fieldName, attrInfo.GetType().Name);

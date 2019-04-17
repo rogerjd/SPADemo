@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SharedLibrary
+namespace SharedLib3
 {
     public class ValidationResult
     {

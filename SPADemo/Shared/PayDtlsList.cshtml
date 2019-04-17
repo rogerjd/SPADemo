@@ -1,0 +1,30 @@
+﻿<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="text-center" style="width:10%">Delete</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pd in PayDtls)
+        {
+            <PayDtlItem Quantity="@pd.Quantity" Amount="@pd.Amount" />
+        }
+    </tbody>
+</table>
+
+<NewPayDtl OnNewItem="@OnNewItem"></NewPayDtl>
+
+@functions{
+    [Parameter]
+    IList<PayDtl> PayDtls { get; set; }
+
+    void OnNewItem(string newItemText)
+    {
+        if (PayDtls != null)
+        {
+            PayDtls.Add(new PayDtl { Quantity = Decimal.Parse(newItemText) });
+            StateHasChanged();
+        }
+    }
+}

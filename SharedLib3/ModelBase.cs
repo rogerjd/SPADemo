@@ -1,9 +1,9 @@
-﻿using SharedLibrary.Rules;
+﻿using SharedLib3.Rules;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SharedLibrary
+namespace SharedLib3
 {
     public class ModelBase
     {

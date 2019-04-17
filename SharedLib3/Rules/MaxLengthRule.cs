@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SharedLibrary.Rules
+namespace SharedLib3.Rules
 {
     public class MaxLengthRule : Attribute, IModelRule
     {

@@ -1,0 +1,12 @@
+﻿@page "/paytran"
+
+<h1>Pay Tran</h1>
+
+<PayDtlsList PayDtls="@paydtls"></PayDtlsList>
+
+@functions {
+    IList<PayDtl> paydtls = new List<PayDtl>
+    {
+        (new PayDtl{Quantity = 40})
+    };
+}

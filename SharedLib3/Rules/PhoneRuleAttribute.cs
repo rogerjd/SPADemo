@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SharedLibrary.Rules
+namespace SharedLib3.Rules
 {
     internal class PhoneRuleAttribute : Attribute
     {
