@@ -3,10 +3,12 @@
 <h1>Pay Tran</h1>
 
 <PayDtlsList PayDtls="@paydtls"></PayDtlsList>
+@*gross and net ?*@
 
+@* paycheck includes paydtls *@
 @functions {
+//paycheck includes paydtls  - show gross and net
     IList<PayDtl> paydtls = new List<PayDtl>
     {
-        (new PayDtl{Quantity = 40})
     };
 }
