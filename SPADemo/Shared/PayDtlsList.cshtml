@@ -1,4 +1,6 @@
-﻿<table class="table table-bordered">
+﻿@using Microsoft.AspNetCore.Blazor;
+
+<table class="table table-bordered">
     <thead>
         <tr>
             <th class="text-center" style="width:10%">Delete</th>
@@ -19,14 +21,17 @@
     [Parameter]
     IList<PayDtl> PayDtls { get; set; } //use paycheck
 
-
     void OnNewItem(string newItemText)
     {
-            //child (this) needs to notifiy parent(PayTran) to refresh gross and net  StateHasChanged (current component)
+        //child (this) needs to notifiy parent(PayTran) to refresh gross and net  StateHasChanged (current component)
         if (PayDtls != null)
         {
             PayDtls.Add(new PayDtl { Quantity = Decimal.Parse(newItemText) });
             StateHasChanged();
+            OnPayChange();
         }
     }
+
+    [Parameter]
+    Action OnPayChange { get; set; }
 }

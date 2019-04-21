@@ -1,14 +1,32 @@
 ﻿@page "/paytran"
 
+@using Microsoft.AspNetCore.Blazor;
+
 <h1>Pay Tran</h1>
 
-<PayDtlsList PayDtls="@paydtls"></PayDtlsList>
+<PayDtlsList PayDtls="@paydtls" OnPayChange="@UpdatePayCheck"></PayDtlsList>
 @*gross and net ?*@
+
+<h2>@gross</h2>
 
 @* paycheck includes paydtls *@
 @functions {
-//paycheck includes paydtls  - show gross and net
+    //paycheck includes paydtls  - show gross and net
     IList<PayDtl> paydtls = new List<PayDtl>
     {
     };
+
+    string gross = "6";
+
+    public void Test()
+    {
+        gross = "test change";
+        StateHasChanged();
+    }
+
+    void UpdatePayCheck()
+    {
+        gross = "321";
+        StateHasChanged();
+    }
 }
