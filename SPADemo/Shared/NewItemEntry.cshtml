@@ -6,7 +6,7 @@
            placeholder="Enter your name here"
            bind-value-oninput="@Text" onkeypress="@KeyPress" />
     <div class="input-group-append">
-        <button class="btn btn-secondary @buttonDisabled" onclick="@NewItem">Add (Enter)</button>
+        <button class="btn btn-secondary @buttonDisabled" disabled="@buttonDisabled" onclick="@NewItem">Add (Enter)</button>
     </div>
 </div>
 
